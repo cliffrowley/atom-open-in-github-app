@@ -5,7 +5,7 @@
   "private": true,
   "description": "Opens the current project in GitHub.app",
   "activationEvents": ["open-in-github-app:open"],
-  "repository": "https://github.com/cliffrowley/open-in-github-app",
+  "repository": "https://github.com/cliffrowley/atom-open-in-github-app",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
