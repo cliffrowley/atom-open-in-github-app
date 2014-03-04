@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Open in GitHub.app': 'open-in-github-app:open'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'GitHub App'
+      'submenu': [
+        { 'label': 'Open in GitHub.app', 'command': 'open-in-github-app:open' }
+      ]
+    ]
+  }
+]
