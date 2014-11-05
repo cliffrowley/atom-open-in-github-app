@@ -9,3 +9,4 @@
 # https://atom.io/docs/latest/advanced/keymaps
 '.workspace':
   'cmd-H': 'open-in-github-app:open'
+  'ctrl-H': 'open-in-github-app:open'
