@@ -12,16 +12,16 @@ module.exports =
       exec "open -a GitHub.app #{@path}" if @path?
     else
       repo = atom.project.getRepo()
+      protocol = "github-windows://openRepo/"
+
       if repo?
         url = @githubRepoUrl(repo)
-        protocol = "github-windows://openRepo/"
+        protocol = protocol + "#{url}" if url?
 
-        if url?
-          protocol = protocol + "#{url}"
-          branch = @branchName(repo)
-          protocol = protocol + "?branch=#{branch}" if branch?
+        branch = @branchName(repo)
+        protocol = protocol + "?branch=#{branch}" if branch?
 
-        shell.openExternal protocol
+      shell.openExternal protocol
 
   # Based on https://github.com/atom/open-on-github/blob/50b38b91acb0eb5e123dad49ba8ad3a82906ca5c/lib/github-file.coffee:
 
