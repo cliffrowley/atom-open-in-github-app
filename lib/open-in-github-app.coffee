@@ -6,11 +6,10 @@ module.exports =
     atom.workspaceView.command "open-in-github-app:open", => @openApp()
 
   openApp: ->
-    @filePath = atom.project?.getPath()
-    repo = atom.project.getRepo()
+    @path = atom.project?.getPath()
 
     if process.platform is 'darwin'
-      exec "open -a GitHub.app #{path}" if path?
+      exec "open -a GitHub.app #{@path}" if @path?
     else
       if repo?
         url = @githubRepoUrl(repo)
@@ -39,13 +38,13 @@ module.exports =
 
   gitUrl: (repo) ->
     remoteOrBestGuess = @remoteName(repo) ? 'origin'
-    repo.getConfigValue("remote.#{remoteOrBestGuess}.url", @filePath)
+    repo.getConfigValue("remote.#{remoteOrBestGuess}.url", @path)
 
   remoteName: (repo) ->
-    shortBranch = repo.getShortHead(@filePath)
+    shortBranch = repo.getShortHead(@path)
     return null unless shortBranch
 
-    branchRemote = repo.getConfigValue("branch.#{shortBranch}.remote", @filePath)
+    branchRemote = repo.getConfigValue("branch.#{shortBranch}.remote", @path)
     return null unless branchRemote?.length > 0
 
     branchRemote
@@ -58,10 +57,10 @@ module.exports =
       host is 'bitbucket.org'
 
   branchName: (repo) ->
-    shortBranch = repo.getShortHead(@filePath)
+    shortBranch = repo.getShortHead(@path)
     return null unless shortBranch
 
-    branchMerge = repo.getConfigValue("branch.#{shortBranch}.merge", @filePath)
+    branchMerge = repo.getConfigValue("branch.#{shortBranch}.merge", @path)
     return shortBranch unless branchMerge?.length > 11
     return shortBranch unless branchMerge.indexOf('refs/heads/') is 0
 
