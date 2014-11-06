@@ -1,27 +1,29 @@
 exec = require("child_process").exec
 shell = require('shell')
-repo = {}
 
 module.exports =
   activate: (state) ->
     atom.workspaceView.command "open-in-github-app:open", => @openApp()
 
   openApp: ->
-    path = atom.project?.getPath()
+    @filePath = atom.project?.getPath()
     repo = atom.project.getRepo()
 
     if process.platform is 'darwin'
       exec "open -a GitHub.app #{path}" if path?
     else
       if repo?
-        url = @githubRepoUrl()
-        shell.openExternal "github-windows://openRepo/#{url}"
+        url = @githubRepoUrl(repo)
+        protocol = "github-windows://openRepo/#{url}"
 
-  # From https://github.com/atom/open-on-github/blob/50b38b91acb0eb5e123dad49ba8ad3a82906ca5c/lib/github-file.coffee:
+        branch = @branchName(repo)
+        protocol = protocol + "?branch=#{branch}" if branch?
+        shell.openExternal protocol
 
-  # Internal
-  githubRepoUrl: ->
-    url = @gitUrl()
+  # Based on https://github.com/atom/open-on-github/blob/50b38b91acb0eb5e123dad49ba8ad3a82906ca5c/lib/github-file.coffee:
+
+  githubRepoUrl: (repo) ->
+    url = @gitUrl(repo)
     if url.match /https:\/\/[^\/]+\// # e.g., https://github.com/foo/bar.git
       url = url.replace(/\.git$/, '')
     else if url.match /git@[^:]+:/    # e.g., git@github.com:foo/bar.git
@@ -33,15 +35,13 @@ module.exports =
 
     url = url.replace(/\/+$/, '')
 
-    return url # unless @isBitbucketUrl(url)
+    return url unless @isBitbucketUrl(url)
 
-  # Internal
-  gitUrl: ->
-    remoteOrBestGuess = @remoteName() ? 'origin'
+  gitUrl: (repo) ->
+    remoteOrBestGuess = @remoteName(repo) ? 'origin'
     repo.getConfigValue("remote.#{remoteOrBestGuess}.url", @filePath)
 
-  # Internal
-  remoteName: ->
+  remoteName: (repo) ->
     shortBranch = repo.getShortHead(@filePath)
     return null unless shortBranch
 
@@ -49,3 +49,20 @@ module.exports =
     return null unless branchRemote?.length > 0
 
     branchRemote
+
+  isBitbucketUrl: (url) ->
+    return true if url.indexOf('git@bitbucket.org') is 0
+
+    try
+      {host} = parseUrl(url)
+      host is 'bitbucket.org'
+
+  branchName: (repo) ->
+    shortBranch = repo.getShortHead(@filePath)
+    return null unless shortBranch
+
+    branchMerge = repo.getConfigValue("branch.#{shortBranch}.merge", @filePath)
+    return shortBranch unless branchMerge?.length > 11
+    return shortBranch unless branchMerge.indexOf('refs/heads/') is 0
+
+    branchMerge.substring(11)
