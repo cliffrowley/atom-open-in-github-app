@@ -7,5 +7,8 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.workspace':
+'.platform-darwin .workspace':
   'cmd-H': 'open-in-github-app:open'
+
+'.platform-win32 .workspace':
+  'ctrl-H': 'open-in-github-app:open'
