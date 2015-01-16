@@ -10,5 +10,5 @@
 '.platform-darwin .atom-workspace':
   'cmd-H': 'open-in-github-app:open'
 
-'.platform-win32 .atom-workspace':
+'.platform-win32 atom-workspace':
   'ctrl-H': 'open-in-github-app:open'
