@@ -3,7 +3,7 @@ shell = require('shell')
 
 module.exports =
   activate: (state) ->
-    atom.workspaceView.command "open-in-github-app:open", => @openApp()
+    atom.views.getView(atom.workspace).command "open-in-github-app:open", => @openApp()
 
   openApp: ->
     @path = atom.project?.getPath()
