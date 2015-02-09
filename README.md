@@ -1,4 +1,4 @@
-# Open in GitHub.app
+# Open in GitHub for [Mac|Windows]
 
 Opens the current project in [GitHub for Mac](http://mac.github.com) or [GitHub for Windows](https://windows.github.com/) with <kbd>ctrl-alt-g</kbd>.
 
