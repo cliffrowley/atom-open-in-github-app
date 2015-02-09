@@ -1,6 +1,6 @@
 # Open in GitHub.app
 
-Opens the current project in [GitHub.app](http://mac.github.com) (<kbd>&#8984;&#8679;H</kbd>)
+Opens the current project in [GitHub for Mac](http://mac.github.com) or [GitHub for Windows](https://windows.github.com/) with <kbd>ctrl-alt-g</kbd>.
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/303485845/Atom/packages/open-in-github-app/open-in-github-app.png)
 
