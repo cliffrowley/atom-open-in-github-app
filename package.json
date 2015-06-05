@@ -1,7 +1,7 @@
 {
   "name": "open-in-github-app",
   "main": "./lib/open-in-github-app",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Opens the current project in GitHub.app",
   "keywords": [],
   "activationCommands": {
