@@ -14,7 +14,9 @@
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.5"
+  },
   "readme": "# Open in GitHub for [Mac|Windows]\n\n Opens the current project in [GitHub for Mac](http://mac.github.com) or [GitHub for Windows](https://windows.github.com/) with <kbd>ctrl-alt-g</kbd>.",
   "readmeFilename": "README.md"
 }
