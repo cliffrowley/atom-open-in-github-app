@@ -12,7 +12,8 @@ module.exports =
     if process.platform is 'darwin'
       exec "open -a GitHub.app #{@path}" if @path?
     else
-      repo = atom.project.getRepo()
+      rootDirIndex = atom.project.getPaths().indexOf(@path)
+      repo = atom.project.getRepositories()[rootDirIndex]
       protocol = "github-windows://openRepo/"
 
       if repo?
