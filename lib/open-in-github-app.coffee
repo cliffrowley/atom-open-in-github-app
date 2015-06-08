@@ -3,10 +3,11 @@ shell = require('shell')
 
 module.exports =
   activate: (state) ->
-    atom.commands.add 'atom-workspace', 'open-in-github-app:open', => @openApp()
+    atom.commands.add 'atom-pane', 'open-in-github-app:open', => @openApp()
 
   openApp: ->
-    @path = atom.project?.getPath()
+    if itemPath = atom.workspace.getActivePaneItem()?.getPath?()
+        [@path] = atom.project.relativizePath(itemPath)
 
     if process.platform is 'darwin'
       exec "open -a GitHub.app #{@path}" if @path?
