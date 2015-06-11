@@ -17,6 +17,9 @@
   "dependencies": {
     "atom-space-pen-views": "^2.0.5"
   },
-  "readme": "# Open in GitHub for [Mac|Windows]\n\n Opens the current project in [GitHub for Mac](http://mac.github.com) or [GitHub for Windows](https://windows.github.com/) with <kbd>ctrl-alt-g</kbd>.",
+  "scripts": {
+    "prepublish": "coffee scripts/prepublish.coffee"
+  },
+  "readme": "# Open in GitHub App\n\nOpens the current project in GitHub app for [Mac](http://mac.github.com) or [Windows](https://windows.github.com/).",
   "readmeFilename": "README.md"
 }
