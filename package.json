@@ -15,7 +15,8 @@
     "atom": ">=0.174.0 <2.0.0"
   },
   "dependencies": {
-    "atom-space-pen-views": "^2.0.5"
+    "atom-space-pen-views": "^2.0.5",
+    "giturlparse": "^1.2.0"
   },
   "scripts": {
     "prepublish": "coffee scripts/prepublish.coffee"
