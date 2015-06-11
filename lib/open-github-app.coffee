@@ -9,7 +9,7 @@ openAppForDirectory = (projectPath) ->
     when 'darwin'
       shell.openExternal "github-mac://openRepo/#{path.resolve(projectPath)}"
     when 'win32'
-    atom.project.repositoryForDirectory(new Directory(projectPath)).then (repo) ->
-      shell.openExternal "#{protocol}://openRepo/#{repo.getOriginURL()}"
+      atom.project.repositoryForDirectory(new Directory(projectPath)).then (repo) ->
+        shell.openExternal "#{protocol}://openRepo/#{repo.getOriginURL()}"
 
 module.exports = openAppForDirectory
