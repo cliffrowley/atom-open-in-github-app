@@ -18,13 +18,13 @@ The GitHub app behaves very differently on Windows. Most notably there doesn't s
  * If the repository URL is not known to the app then it will simply open with whichever repository you last had selected.
  * If the repository URL _is_ known to the app but isn't where it expects to find it, then the app will prompt you to clone the repository.
 
- Essentially you just need to ensure that the GitHub app is already aware of your repository before you try launching it via Atom. And if at any point you move your local repository, ensure the GitHub app is aware of this.
+Essentially you just need to ensure that the GitHub app is already aware of your repository before you try launching it via Atom. And if at any point you move your local repository, ensure the GitHub app is aware of this.
 
- We've asked GitHub to update the app to allow launching with a local directory, but so far our request seems to have fallen on deaf ears. If by some miracle our request is implemented, we'll update this package and unify the behaviour.
+We've asked GitHub to update the app to allow launching with a local directory, but so far our request seems to have fallen on deaf ears. If by some miracle our request is implemented, we'll update this package and unify the behaviour.
 
 ## Mac
 
- The app pretty much behaves as you would expect and if your project directory is not known to the GitHub app it will be added to its sidebar and remembered.
+The app pretty much behaves as you would expect and if your project directory is not known to the GitHub app it will be added to its sidebar and remembered.
 
 ## Authors
 
