@@ -1,3 +1,7 @@
+# IMPORTANT NOTE
+
+I am no longer maintaining this project. Please contact me or create an issue if you wish take ownership of it.
+
 # Open in GitHub App
 
 Opens the current project in GitHub app for [Mac](http://mac.github.com) or [Windows](https://windows.github.com/).
